@@ -1,0 +1,22 @@
+{
+  "class_names": [
+    "ADIPOSE",
+    "COMPLEX",
+    "DEBRIS",
+    "EMPTY",
+    "LYMPHO",
+    "MUCOSA",
+    "STROMA",
+    "TUMOR"
+  ],
+  "labels_es": [
+    "Adiposo",
+    "Complejo",
+    "Detritos",
+    "Fondo vacío",
+    "Linfocitos",
+    "Mucosa",
+    "Estroma",
+    "Tumor"
+  ]
+}

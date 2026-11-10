@@ -1,0 +1,95 @@
+{
+  "version": "1.0",
+  "status": "prototipo academico; NO validado clinicamente",
+  "meets_size_and_cpu_latency_targets": true,
+  "cpu_latency_ms_per_image": 73.97459799994976,
+  "timestamp": "2026-11-07T21:12:42",
+  "model": {
+    "architecture": "CNN Optimizada",
+    "total_params": 2461672,
+    "input_shape": [
+      150,
+      150,
+      3
+    ],
+    "output_classes": 8,
+    "size_mb": 28.346
+  },
+  "training": {
+    "best_val_loss": 0.8057642579078674,
+    "best_epoch": 30,
+    "final_epoch": 40,
+    "checkpoint_monitor": "val_loss",
+    "model_selection_metric": "macro_f1_validation",
+    "training_minutes": 6.04,
+    "config": {
+      "learning_rate": 0.001,
+      "epochs": 50,
+      "batch_size": 32,
+      "optimizer": "adam",
+      "weight_decay": 0.0001,
+      "label_smoothing": 0.1,
+      "l2_layers": 0.0001,
+      "early_stopping_patience": 10,
+      "reduce_lr_patience": 5,
+      "reduce_lr_factor": 0.5,
+      "min_lr": 1e-06,
+      "seed": 42,
+      "img_size": [
+        150,
+        150
+      ],
+      "augmentation": {
+        "rotation": 0.25,
+        "zoom": 0.1,
+        "brightness": 0.1,
+        "contrast": 0.1
+      }
+    }
+  },
+  "metrics": {
+    "val": {
+      "acc": 0.9053333333333333,
+      "f1": 0.9064640514390245,
+      "auc": 0.9915683728738203
+    },
+    "test": {
+      "acc": 0.9226666666666666,
+      "f1": 0.9227439855133877,
+      "auc": 0.9947865089883419,
+      "f1_ci95": [
+        0.9015076050739446,
+        0.9404751668905021
+      ]
+    }
+  },
+  "dataset": {
+    "name": "Kather-texture-2016",
+    "source": "https://huggingface.co/datasets/1aurent/Kather-texture-2016",
+    "total_images": 5000,
+    "splits": {
+      "train": 3500,
+      "val": 750,
+      "test": 750
+    },
+    "classes": [
+      "ADIPOSE",
+      "COMPLEX",
+      "DEBRIS",
+      "EMPTY",
+      "LYMPHO",
+      "MUCOSA",
+      "STROMA",
+      "TUMOR"
+    ],
+    "split_protocol": "estratificado_por_parche; NO independiente por paciente/lámina",
+    "patient_or_slide_independent": false,
+    "manifest": "data/processed/manifest_splits.csv"
+  },
+  "environment": {
+    "tensorflow_version": "2.21.0",
+    "python_version": "3.13.16",
+    "seed": 42,
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39"
+  }
+}
