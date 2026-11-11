@@ -1,52 +1,43 @@
-# Kather CNN — Aplicación web de clasificación histológica
+# 🔬 Kather CNN — Clasificador de Tejidos Histológicos
 
-Aplicación educativa de una página para clasificar parches histológicos
-colorrectales en ocho categorías con la **CNN Optimizada** del proyecto.
-No es una herramienta clínica.
+Aplicación web académica que utiliza una **Red Neuronal Convolucional (CNN)** para clasificar imágenes microscópicas de tejidos colorrectales en ocho categorías.
 
-## Archivos del repositorio
+### 🌐 Acceder a la aplicación
 
-- `app.py`: interfaz de Streamlit.
-- `inferencia.py`: preprocesamiento, ejecución de TFLite e interpretación.
-- `model_v1_float16.tflite`: modelo **real** exportado desde Colab.
-- `class_names.json`: etiquetas originales en su orden exacto.
-- `metadata.json`: metadatos originales del modelo y sus resultados.
-- `requirements.txt`: dependencias mínimas, sin instalar TensorFlow completo.
+**[Abrir Kather CNN](https://kather-cnn-web.streamlit.app/)**
 
-## Publicar gratis en Streamlit Community Cloud
+### 📌 ¿Cómo utilizarla?
 
-1. En GitHub, abre el repositorio público `kather-cnn-web`.
-2. Pulsa **Add file > Upload files**. Descomprime primero el ZIP recibido.
-   Sube los siete archivos de esta carpeta a la **raíz** del repositorio.
-   No subas el `.zip` como único archivo ni una carpeta adicional.
-3. Haz **Commit changes** en la rama `main`.
-4. En https://share.streamlit.io, elige **Deploy a public app from GitHub**.
-5. Repositorio: `AntonyRMV26/kather-cnn-web` (ajustar si tu usuario difiere).
-   Rama: `main`. Main file path: `app.py`.
-6. En **Advanced settings**, elige **Python 3.12**.
-7. Pulsa **Deploy** y espera la instalación de dependencias.
-8. Prueba una imagen histológica de 150x150 px. Verifica los 8 nombres
-   y que coincida la predicción con el notebook al usar la misma imagen.
+1. Ingresa al enlace de la aplicación.
+2. Pulsa **Upload** y selecciona una imagen histológica en formato JPG o PNG.
+3. Haz clic en **Clasificar imagen**.
+4. Observa la categoría predicha, su probabilidad estimada y una breve interpretación.
 
-## Ejecutar localmente
+### 🧬 Categorías reconocidas
 
-```bash
-python -m pip install -r requirements.txt
-streamlit run app.py
-```
+- Adiposo
+- Complejo
+- Detritos
+- Fondo vacío
+- Linfocitos
+- Mucosa
+- Estroma
+- Tumor
 
-## Preprocesamiento
+### 📊 Modelo y rendimiento
 
-Imagen JPG o PNG → RGB → redimensionamiento bilineal a 150x150 → float32
-en escala 0..255. **El reescalado 1/255 ya está integrado en el modelo**.
+Modelo CNN entrenado con el dataset **Kather (5,000 imágenes, ocho clases balanceadas)** y desplegado mediante TensorFlow Lite y Streamlit.
 
-## Procedencia, alcance y limitaciones
+**Accuracy en el conjunto de prueba: 92.27%.**
 
-El conjunto Kather tiene ocho categorías: ADIPOSE, COMPLEX, DEBRIS,
-EMPTY, LYMPHO, MUCOSA, STROMA y TUMOR. El conjunto de prueba de 750
-recortes fue separado por imagen, no por paciente o lámina. La métrica
-Macro F1 ≈0.9227 corresponde a esa evaluación interna y no justifica
-uso clínico. No usar imágenes con información identificable de pacientes.
+### ⚠️ Limitaciones importantes
 
-Código web preparado a partir de la entrega real del grupo; no se han
-modificado ni vuelto a entrenar los pesos de la CNN.
+- Utiliza únicamente imágenes histológicas colorrectales similares a las del dataset Kather.
+- No está diseñado para fotografías convencionales, otros tejidos ni imágenes médicas de modalidades diferentes.
+- Una probabilidad elevada no garantiza que la clasificación sea correcta.
+- El rendimiento indicado corresponde al conjunto de prueba utilizado; no representa una validación clínica con pacientes independientes.
+- **Esta aplicación es exclusivamente educativa y no constituye una herramienta de diagnóstico médico.** No subas imágenes con datos personales o clínicos identificables.
+
+---
+
+**Proyecto académico — Ingeniería del Conocimiento | Universidad Nacional del Centro del Perú (UNCP)**
